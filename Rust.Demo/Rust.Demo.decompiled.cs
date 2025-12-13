@@ -1,0 +1,577 @@
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Facepunch;
+using ProtoBuf;
+using UnityEngine;
+
+[assembly: CompilationRelaxations(8)]
+[assembly: RuntimeCompatibility(WrapNonExceptionThrows = true)]
+[assembly: Debuggable(DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+[assembly: AssemblyVersion("0.0.0.0")]
+[CompilerGenerated]
+[EditorBrowsable(EditorBrowsableState.Never)]
+[GeneratedCode("Unity.MonoScriptGenerator.MonoScriptInfoGenerator", null)]
+internal class UnitySourceGeneratedAssemblyMonoScriptTypes_v1
+{
+	private struct MonoScriptData
+	{
+		public byte[] FilePathsData;
+
+		public byte[] TypesData;
+
+		public int TotalTypes;
+
+		public int TotalFiles;
+
+		public bool IsEditorOnly;
+	}
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private static MonoScriptData Get()
+	{
+		return new MonoScriptData
+		{
+			FilePathsData = new byte[339]
+			{
+				0, 0, 0, 1, 0, 0, 0, 36, 92, 65,
+				115, 115, 101, 116, 115, 92, 80, 108, 117, 103,
+				105, 110, 115, 92, 82, 117, 115, 116, 46, 68,
+				101, 109, 111, 92, 68, 101, 102, 105, 110, 101,
+				115, 46, 99, 115, 0, 0, 0, 2, 0, 0,
+				0, 44, 92, 65, 115, 115, 101, 116, 115, 92,
+				80, 108, 117, 103, 105, 110, 115, 92, 82, 117,
+				115, 116, 46, 68, 101, 109, 111, 92, 73, 110,
+				100, 101, 120, 105, 110, 103, 92, 69, 110, 116,
+				105, 116, 121, 46, 99, 115, 0, 0, 0, 1,
+				0, 0, 0, 45, 92, 65, 115, 115, 101, 116,
+				115, 92, 80, 108, 117, 103, 105, 110, 115, 92,
+				82, 117, 115, 116, 46, 68, 101, 109, 111, 92,
+				73, 110, 100, 101, 120, 105, 110, 103, 92, 73,
+				110, 100, 101, 120, 101, 114, 46, 99, 115, 0,
+				0, 0, 2, 0, 0, 0, 46, 92, 65, 115,
+				115, 101, 116, 115, 92, 80, 108, 117, 103, 105,
+				110, 115, 92, 82, 117, 115, 116, 46, 68, 101,
+				109, 111, 92, 73, 110, 100, 101, 120, 105, 110,
+				103, 92, 75, 101, 121, 102, 114, 97, 109, 101,
+				46, 99, 115, 0, 0, 0, 1, 0, 0, 0,
+				35, 92, 65, 115, 115, 101, 116, 115, 92, 80,
+				108, 117, 103, 105, 110, 115, 92, 82, 117, 115,
+				116, 46, 68, 101, 109, 111, 92, 80, 97, 99,
+				107, 101, 116, 46, 99, 115, 0, 0, 0, 1,
+				0, 0, 0, 42, 92, 65, 115, 115, 101, 116,
+				115, 92, 80, 108, 117, 103, 105, 110, 115, 92,
+				82, 117, 115, 116, 46, 68, 101, 109, 111, 92,
+				80, 108, 97, 121, 98, 97, 99, 107, 83, 116,
+				97, 116, 115, 46, 99, 115, 0, 0, 0, 1,
+				0, 0, 0, 35, 92, 65, 115, 115, 101, 116,
+				115, 92, 80, 108, 117, 103, 105, 110, 115, 92,
+				82, 117, 115, 116, 46, 68, 101, 109, 111, 92,
+				82, 101, 97, 100, 101, 114, 46, 99, 115
+			},
+			TypesData = new byte[218]
+			{
+				0, 0, 0, 0, 17, 82, 117, 115, 116, 46,
+				68, 101, 109, 111, 124, 68, 101, 102, 105, 110,
+				101, 115, 1, 0, 0, 0, 17, 82, 117, 115,
+				116, 46, 68, 101, 109, 111, 124, 73, 110, 100,
+				101, 120, 101, 114, 0, 0, 0, 0, 24, 82,
+				117, 115, 116, 46, 68, 101, 109, 111, 46, 73,
+				110, 100, 101, 120, 101, 114, 124, 69, 110, 116,
+				105, 116, 121, 1, 0, 0, 0, 17, 82, 117,
+				115, 116, 46, 68, 101, 109, 111, 124, 73, 110,
+				100, 101, 120, 101, 114, 1, 0, 0, 0, 17,
+				82, 117, 115, 116, 46, 68, 101, 109, 111, 124,
+				73, 110, 100, 101, 120, 101, 114, 0, 0, 0,
+				0, 26, 82, 117, 115, 116, 46, 68, 101, 109,
+				111, 46, 73, 110, 100, 101, 120, 101, 114, 124,
+				75, 101, 121, 102, 114, 97, 109, 101, 0, 0,
+				0, 0, 16, 82, 117, 115, 116, 46, 68, 101,
+				109, 111, 124, 80, 97, 99, 107, 101, 116, 0,
+				0, 0, 0, 23, 82, 117, 115, 116, 46, 68,
+				101, 109, 111, 124, 80, 108, 97, 121, 98, 97,
+				99, 107, 83, 116, 97, 116, 115, 0, 0, 0,
+				0, 16, 82, 117, 115, 116, 46, 68, 101, 109,
+				111, 124, 82, 101, 97, 100, 101, 114
+			},
+			TotalFiles = 7,
+			TotalTypes = 9,
+			IsEditorOnly = false
+		};
+	}
+}
+namespace Rust.Demo;
+
+public static class Defines
+{
+	public const string Ident = "RUST DEMO FORMAT";
+}
+public class Indexer
+{
+	public class Entity
+	{
+		public ProtoBuf.Entity Init;
+
+		public ProtoBuf.Entity Data;
+
+		public Vector3 Position;
+
+		public Vector3 Rotation;
+
+		public NetworkableId UId => Init.baseNetworkable.uid;
+
+		public Entity Copy()
+		{
+			return new Entity
+			{
+				Init = Init,
+				Data = Data,
+				Position = Position,
+				Rotation = Rotation
+			};
+		}
+	}
+
+	public class Keyframe
+	{
+		public long Position;
+
+		public Entity[] Entities;
+
+		public NetworkableId[] Updated;
+
+		public Dictionary<NetworkableId, Entity> EntityDict;
+
+		public void Init()
+		{
+			EntityDict = Entities.ToDictionary((Entity x) => x.UId, (Entity x) => x);
+		}
+
+		public bool HasEntity(NetworkableId iD)
+		{
+			return EntityDict.ContainsKey(iD);
+		}
+	}
+
+	private List<Keyframe> keyframes = new List<Keyframe>();
+
+	private long LastPacketTime;
+
+	private long PacketCount;
+
+	private Dictionary<NetworkableId, Entity> currentEnts = new Dictionary<NetworkableId, Entity>();
+
+	private long NextKeyframe;
+
+	private List<NetworkableId> Updated = new List<NetworkableId>();
+
+	public TimeSpan TotalLength => TimeSpan.FromMilliseconds(LastPacketTime);
+
+	public long Interval => 1000L;
+
+	public int KeyframeCount => keyframes.Count;
+
+	internal Indexer(Reader reader)
+	{
+		reader.Progress(long.MaxValue);
+		while (!reader.IsFinished)
+		{
+			Packet packet = reader.ReadPacket();
+			if (!packet.isValid)
+			{
+				break;
+			}
+			try
+			{
+				TryCreateKeyframe(packet);
+				ProcessPacket(packet);
+			}
+			catch (Exception exception)
+			{
+				UnityEngine.Debug.LogException(exception);
+			}
+		}
+		reader.ResetToStart();
+		if (keyframes.Count > 1)
+		{
+			keyframes[0].Entities = keyframes[1].Entities;
+			keyframes[0].EntityDict = keyframes[1].EntityDict;
+			keyframes[0].Updated = keyframes[1].Updated;
+		}
+		UnityEngine.Debug.Log($"Index created {keyframes.Count} keyframes");
+	}
+
+	private void ProcessPacket(Packet packet)
+	{
+		PacketCount++;
+		LastPacketTime = Math.Max(LastPacketTime, packet.Time);
+		using BinaryReader binaryReader = new BinaryReader(new MemoryStream(packet.Data));
+		byte b = binaryReader.ReadByte();
+		if (b > 140)
+		{
+			switch ((byte)(b - 140))
+			{
+			case 5:
+				Entities(binaryReader);
+				break;
+			case 9:
+				RpcMessage(binaryReader);
+				break;
+			case 10:
+				EntityPosition(binaryReader);
+				break;
+			case 6:
+				EntityDestroy(binaryReader);
+				break;
+			}
+		}
+	}
+
+	private void EntityUpdated(NetworkableId ent)
+	{
+		if (!Updated.Contains(ent))
+		{
+			Updated.Add(ent);
+		}
+	}
+
+	private void EntityPosition(BinaryReader reader)
+	{
+		NetworkableId networkableId = new NetworkableId(reader.ReadUInt64());
+		Vector3 position = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+		Vector3 rotation = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+		EntityUpdated(networkableId);
+		if (currentEnts.TryGetValue(networkableId, out var value))
+		{
+			value.Position = position;
+			value.Rotation = rotation;
+		}
+	}
+
+	private void RpcMessage(BinaryReader reader)
+	{
+	}
+
+	internal Keyframe LookupKeyframeForTime(long time)
+	{
+		int index = Mathf.FloorToInt(time / Interval);
+		return GetKeyframe(index);
+	}
+
+	public Keyframe GetKeyframe(int index)
+	{
+		index = Mathf.Clamp(index, 0, keyframes.Count - 1);
+		return keyframes[index];
+	}
+
+	internal HashSet<NetworkableId> GetChangedEntities(long from, long to)
+	{
+		using (TimeWarning.New("GetChangedEntities"))
+		{
+			int num = Mathf.Min((int)from, (int)to) / (int)Interval - 1;
+			int num2 = Mathf.Max((int)from, (int)to) / (int)Interval + 1;
+			HashSet<NetworkableId> hashSet = new HashSet<NetworkableId>();
+			for (int i = num; i <= num2; i++)
+			{
+				Keyframe keyframe = GetKeyframe(i);
+				for (int j = 0; j < keyframe.Updated.Length; j++)
+				{
+					if (!hashSet.Contains(keyframe.Updated[j]))
+					{
+						hashSet.Add(keyframe.Updated[j]);
+					}
+				}
+			}
+			return hashSet;
+		}
+	}
+
+	private void EntityDestroy(BinaryReader reader)
+	{
+		NetworkableId networkableId = new NetworkableId(reader.ReadUInt32());
+		currentEnts.Remove(networkableId);
+		EntityUpdated(networkableId);
+	}
+
+	private void Entities(BinaryReader reader)
+	{
+		reader.ReadUInt32();
+		ProtoBuf.Entity entity = Pool.Get<ProtoBuf.Entity>();
+		entity.ReadFromStream(reader.BaseStream);
+		EntityUpdated(entity.baseNetworkable.uid);
+		if (!currentEnts.TryGetValue(entity.baseNetworkable.uid, out var value))
+		{
+			value = new Entity();
+			value.Init = entity;
+			currentEnts[value.UId] = value;
+		}
+		value.Data = entity;
+	}
+
+	private void TryCreateKeyframe(Packet packet)
+	{
+		if (packet.Time >= NextKeyframe)
+		{
+			NextKeyframe += Interval;
+			Keyframe keyframe = new Keyframe
+			{
+				Position = packet.Position,
+				Entities = currentEnts.Select((KeyValuePair<NetworkableId, Entity> x) => x.Value.Copy()).ToArray(),
+				Updated = Updated.ToArray()
+			};
+			keyframe.Init();
+			keyframes.Add(keyframe);
+			Updated.Clear();
+		}
+	}
+}
+internal enum MessageType : byte
+{
+	Welcome = 1,
+	Auth = 2,
+	Approved = 3,
+	Ready = 4,
+	Entities = 5,
+	EntityDestroy = 6,
+	GroupChange = 7,
+	GroupDestroy = 8,
+	RPCMessage = 9,
+	EntityPosition = 10,
+	ConsoleMessage = 11,
+	ConsoleCommand = 12,
+	Effect = 13,
+	DisconnectReason = 14,
+	Tick = 15,
+	Message = 16,
+	RequestUserInformation = 17,
+	GiveUserInformation = 18,
+	GroupEnter = 19,
+	GroupLeave = 20,
+	VoiceData = 21,
+	EAC = 22,
+	EntityFlags = 23,
+	World = 24,
+	ConsoleReplicatedVars = 25,
+	QueueUpdate = 26,
+	SyncVar = 27,
+	PackedSyncVar = 28,
+	Last = 28
+}
+public struct Packet
+{
+	public long Position;
+
+	public int Size;
+
+	public long Time;
+
+	public byte[] Data;
+
+	public bool isValid => Size > 0;
+}
+public static class PlaybackStats
+{
+	public static int Frames;
+
+	public static int Packets;
+
+	public static TimeSpan TotalTime;
+
+	public static TimeSpan DemoLength;
+
+	public static void Reset()
+	{
+		Frames = 0;
+		Packets = 0;
+		TotalTime = default(TimeSpan);
+		DemoLength = default(TimeSpan);
+	}
+}
+public class Reader
+{
+	private Stream stream;
+
+	private BinaryReader reader;
+
+	public Action<Indexer.Keyframe, HashSet<NetworkableId>> OnScrubToKeyframe;
+
+	private bool _isScrubbing;
+
+	private float realTimeLastScrub;
+
+	public static Reader Active { get; internal set; }
+
+	public static bool IsActive => Active != null;
+
+	public string Name { get; private set; }
+
+	public long CurrentTime { get; private set; }
+
+	public Indexer Index { get; private set; }
+
+	public DemoHeader Header { get; private set; }
+
+	public bool IsScrubbing
+	{
+		get
+		{
+			return _isScrubbing;
+		}
+		set
+		{
+			if (value)
+			{
+				realTimeLastScrub = Time.realtimeSinceStartup;
+			}
+			_isScrubbing = value;
+		}
+	}
+
+	public bool JustScrubbed => Time.realtimeSinceStartup - realTimeLastScrub < 0.05f;
+
+	private long startPosition { get; set; }
+
+	public bool IsFinished => stream.Position >= stream.Length;
+
+	public bool IsPaused { get; internal set; }
+
+	public void Play()
+	{
+		IsPaused = false;
+	}
+
+	public void Pause()
+	{
+		IsPaused = true;
+	}
+
+	public Reader(string name, Stream stream)
+	{
+		Name = name;
+		this.stream = stream;
+		reader = new BinaryReader(this.stream);
+		if (reader.ReadString() != "RUST DEMO FORMAT")
+		{
+			throw new Exception("Demo has invalid ident");
+		}
+		ReadHeader();
+		startPosition = stream.Position;
+		PlaybackStats.Reset();
+		ResetToStart();
+	}
+
+	public void SetActive()
+	{
+		Active = this;
+	}
+
+	public void JumpTo(long time)
+	{
+		using (TimeWarning.New("Demo.JumpTo"))
+		{
+			if (time < 0)
+			{
+				time = 0L;
+			}
+			if ((double)time > Index.TotalLength.TotalMilliseconds)
+			{
+				time = (long)Index.TotalLength.TotalMilliseconds;
+			}
+			HashSet<NetworkableId> changedEntities = Index.GetChangedEntities(CurrentTime, time);
+			Indexer.Keyframe keyframe = Index.LookupKeyframeForTime(time);
+			CurrentTime = time;
+			stream.Position = keyframe.Position;
+			OnScrubToKeyframe?.Invoke(keyframe, changedEntities);
+		}
+	}
+
+	public void CreateIndex()
+	{
+		Index = new Indexer(this);
+	}
+
+	private void ReadHeader()
+	{
+		int count = reader.ReadInt32();
+		byte[] buffer = reader.ReadBytes(count);
+		if (reader.ReadChar() != 0)
+		{
+			throw new Exception("Demo has invalid header");
+		}
+		Header = DemoHeader.Deserialize(buffer);
+		if (Header == null)
+		{
+			throw new Exception("Error when deserializing header");
+		}
+	}
+
+	public static Reader FromFile(string filename)
+	{
+		FileStream fileStream = new FileStream(filename, FileMode.Open);
+		if (fileStream == null)
+		{
+			return null;
+		}
+		return new Reader(filename, fileStream);
+	}
+
+	public void Stop()
+	{
+		reader?.Dispose();
+		reader = null;
+		stream?.Dispose();
+		stream = null;
+		if (Active == this)
+		{
+			Active = null;
+		}
+	}
+
+	public void Progress(long timeAmountMs)
+	{
+		CurrentTime += timeAmountMs;
+	}
+
+	public void ResetToStart()
+	{
+		CurrentTime = 0L;
+		stream.Position = startPosition;
+	}
+
+	public Packet ReadPacket()
+	{
+		long position = stream.Position;
+		int num = reader.ReadInt32();
+		if (num == -1)
+		{
+			stream.Position = stream.Length;
+			return default(Packet);
+		}
+		long num2 = reader.ReadInt64();
+		if (num2 > CurrentTime)
+		{
+			stream.Position = position;
+			return default(Packet);
+		}
+		byte[] data = reader.ReadBytes(num);
+		if (reader.ReadChar() != 0 || reader.ReadChar() != 0)
+		{
+			throw new Exception("Demo has invalid ident");
+		}
+		PlaybackStats.DemoLength = TimeSpan.FromMilliseconds(num2);
+		PlaybackStats.Packets++;
+		return new Packet
+		{
+			Position = position,
+			Size = num,
+			Time = num2,
+			Data = data
+		};
+	}
+}
