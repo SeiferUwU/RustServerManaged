@@ -1,0 +1,14 @@
+using System.Collections.Generic;
+
+namespace Facepunch.Nexus.Models;
+
+public class ZonePlayerDetails
+{
+	public string PlayerId { get; set; }
+
+	public long LastSeen { get; set; }
+
+	public Dictionary<string, VariableData> Variables { get; set; }
+
+	public string AssignedZoneKey { get; set; }
+}

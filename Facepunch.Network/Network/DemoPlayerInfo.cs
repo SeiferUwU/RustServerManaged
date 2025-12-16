@@ -1,0 +1,10 @@
+namespace Network;
+
+public class DemoPlayerInfo
+{
+	public ulong Guid { get; set; }
+
+	public ulong UserId { get; set; }
+
+	public int ChunkPlayerIndex { get; set; }
+}

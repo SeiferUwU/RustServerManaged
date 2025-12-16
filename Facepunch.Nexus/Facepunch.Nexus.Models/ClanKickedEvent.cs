@@ -1,0 +1,8 @@
+namespace Facepunch.Nexus.Models;
+
+public struct ClanKickedEvent
+{
+	public long ClanId { get; set; }
+
+	public string PlayerId { get; set; }
+}

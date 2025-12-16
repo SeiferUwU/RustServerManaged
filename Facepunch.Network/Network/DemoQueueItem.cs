@@ -1,0 +1,30 @@
+using System;
+
+namespace Network;
+
+public struct DemoQueueItem
+{
+	public NetWrite write;
+
+	public NetRead read;
+
+	public DateTime Timestamp;
+
+	public bool IgnoreNoConnections;
+
+	public DemoQueueItem(NetWrite write)
+	{
+		this.write = write;
+		read = null;
+		IgnoreNoConnections = false;
+		Timestamp = default(DateTime);
+	}
+
+	public DemoQueueItem(NetRead read)
+	{
+		write = null;
+		this.read = read;
+		IgnoreNoConnections = false;
+		Timestamp = default(DateTime);
+	}
+}

@@ -1,0 +1,18 @@
+namespace Facepunch.Nexus;
+
+public enum NexusClanResultCode
+{
+	Fail,
+	Success,
+	NoClan,
+	NotFound,
+	NoPermission,
+	DuplicateName,
+	RoleNotEmpty,
+	CannotSwapLeader,
+	CannotDeleteLeader,
+	CannotKickLeader,
+	CannotDemoteLeader,
+	AlreadyInAClan,
+	ClanIsFull
+}

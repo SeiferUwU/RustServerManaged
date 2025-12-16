@@ -1,0 +1,8 @@
+using System;
+
+namespace Facepunch.Nexus.Logging;
+
+public interface INexusLogger
+{
+	void Log(NexusLogLevel level, string message, Exception exception = null);
+}

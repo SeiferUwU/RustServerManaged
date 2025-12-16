@@ -1,0 +1,35 @@
+using Facepunch.Models;
+using UnityEngine;
+
+namespace Facepunch;
+
+public static class Application
+{
+	private static MonoBehaviour _controller;
+
+	public static Facepunch.Models.Manifest Manifest;
+
+	public static MonoBehaviour Controller
+	{
+		get
+		{
+			if (_controller == null)
+			{
+				GameObject gameObject = new GameObject("Facepunch.Application");
+				Object.DontDestroyOnLoad(gameObject);
+				_controller = gameObject.AddComponent<ApplicationControllerMonobehaviour>();
+			}
+			return _controller;
+		}
+	}
+
+	public static BaseIntegration Integration { get; set; }
+
+	public static void Initialize(BaseIntegration integration)
+	{
+		Mono.FixHttpsValidation();
+		Integration = integration;
+		ExceptionReporter.InstallHooks();
+		Facepunch.Manifest.Download();
+	}
+}

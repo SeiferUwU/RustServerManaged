@@ -1,0 +1,21 @@
+using System;
+
+namespace Facepunch.Nexus.Logging;
+
+public sealed class ConsoleLogger : INexusLogger
+{
+	public static ConsoleLogger Instance { get; } = new ConsoleLogger();
+
+	private ConsoleLogger()
+	{
+	}
+
+	public void Log(NexusLogLevel level, string message, Exception exception = null)
+	{
+		Console.WriteLine($"[{level}] {message}");
+		if (exception != null)
+		{
+			Console.WriteLine(exception);
+		}
+	}
+}

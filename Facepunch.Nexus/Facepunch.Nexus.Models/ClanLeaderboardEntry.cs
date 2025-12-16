@@ -1,0 +1,10 @@
+namespace Facepunch.Nexus.Models;
+
+public struct ClanLeaderboardEntry
+{
+	public long ClanId { get; set; }
+
+	public string Name { get; set; }
+
+	public long Score { get; set; }
+}

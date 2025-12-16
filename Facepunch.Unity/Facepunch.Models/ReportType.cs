@@ -1,0 +1,14 @@
+namespace Facepunch.Models;
+
+public enum ReportType
+{
+	General = 0,
+	Bug = 1,
+	Cheat = 2,
+	Abuse = 3,
+	Idea = 4,
+	OffensiveContent = 5,
+	BreakingServerRules = 6,
+	FIRST = 0,
+	LAST = 6
+}

@@ -1,0 +1,15 @@
+using UnityEngine;
+
+namespace Facepunch;
+
+public class DestroyInSeconds : MonoBehaviour
+{
+	public float TimeToDie = 5f;
+
+	public float TimeToDieVariance;
+
+	private void Start()
+	{
+		Object.Destroy(base.gameObject, TimeToDie + Random.Range(TimeToDieVariance * -0.5f, TimeToDieVariance * 0.5f));
+	}
+}

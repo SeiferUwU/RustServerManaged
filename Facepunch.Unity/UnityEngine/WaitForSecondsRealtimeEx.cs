@@ -1,0 +1,45 @@
+#define UNITY_ASSERTIONS
+using Facepunch;
+using UnityEngine.Assertions;
+
+namespace UnityEngine;
+
+public class WaitForSecondsRealtimeEx : CustomYieldInstruction, Facepunch.Pool.IPooled
+{
+	private bool _isInPool;
+
+	private float _waitUntilTime = -1f;
+
+	public float WaitTime { get; set; }
+
+	public override bool keepWaiting
+	{
+		get
+		{
+			Assert.IsFalse(_isInPool, "WaitForSecondsRealtimeEx.keepWaiting called on instance that is in the pool");
+			if (_waitUntilTime < 0f)
+			{
+				_waitUntilTime = Time.realtimeSinceStartup + WaitTime;
+			}
+			bool num = Time.realtimeSinceStartup >= _waitUntilTime;
+			if (num)
+			{
+				WaitForSecondsRealtimeEx obj = this;
+				Facepunch.Pool.Free(ref obj);
+			}
+			return !num;
+		}
+	}
+
+	public void EnterPool()
+	{
+		_isInPool = true;
+		_waitUntilTime = -1f;
+	}
+
+	public void LeavePool()
+	{
+		_isInPool = false;
+		_waitUntilTime = -1f;
+	}
+}

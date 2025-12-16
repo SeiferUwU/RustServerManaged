@@ -1,0 +1,21 @@
+using System.Threading.Tasks;
+using Facepunch.Nexus.Logging;
+using Facepunch.Nexus.Models;
+
+namespace Facepunch.Nexus.Connector;
+
+internal class NexusPlayerConnector : NexusConnector, INexusPlayerConnector, INexusConnector
+{
+	private readonly string _playerInfoEndpoint;
+
+	public NexusPlayerConnector(INexusLogger logger, string baseUrl)
+		: base(logger, baseUrl)
+	{
+		_playerInfoEndpoint = BaseUrl + "/player/info?nexusId=";
+	}
+
+	public async Task<PlayerDetails> GetPlayerDetails(int nexusId, string playerAuthToken)
+	{
+		return (await GetRequest<PlayerDetails>(_playerInfoEndpoint + nexusId, playerAuthToken)).Response;
+	}
+}

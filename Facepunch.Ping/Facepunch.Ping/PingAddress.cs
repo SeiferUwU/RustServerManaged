@@ -1,0 +1,21 @@
+using Newtonsoft.Json;
+
+namespace Facepunch.Ping;
+
+[JsonModel]
+public class PingAddress : IPingRegion
+{
+	[JsonProperty("ip")]
+	public string IP { get; set; }
+
+	[JsonProperty("location")]
+	public string Location { get; set; }
+
+	[JsonProperty("shortname")]
+	public string Shortname { get; set; }
+
+	[JsonProperty("code")]
+	public string Code { get; set; }
+
+	public int Timeout { get; set; } = 2000;
+}

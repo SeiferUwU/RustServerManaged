@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Oxide.CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Oxide.Core">
+      <HintPath>..\..\Managed\Oxide.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.References">
+      <HintPath>..\..\Managed\Oxide.References.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Oxide.Common">
+      <HintPath>..\..\Managed\Oxide.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

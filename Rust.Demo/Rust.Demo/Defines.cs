@@ -1,0 +1,6 @@
+namespace Rust.Demo;
+
+public static class Defines
+{
+	public const string Ident = "RUST DEMO FORMAT";
+}

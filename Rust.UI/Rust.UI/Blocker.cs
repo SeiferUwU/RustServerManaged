@@ -1,0 +1,19 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+namespace Rust.UI;
+
+public class Blocker : RustControl, IPointerDownHandler, IEventSystemHandler
+{
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		Object.Destroy(base.gameObject);
+	}
+
+	public void AddToCanvasOf(RectTransform rt)
+	{
+		Canvas componentInParent = rt.GetComponentInParent<Canvas>();
+		this.SetParent(componentInParent);
+		base.rectTransform.Fill(-10f, -10f, -10f, -10f);
+	}
+}

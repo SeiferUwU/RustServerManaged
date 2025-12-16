@@ -1,0 +1,16 @@
+using System;
+
+namespace Facepunch.Nexus.Logging;
+
+public sealed class NullLogger : INexusLogger
+{
+	public static NullLogger Instance { get; } = new NullLogger();
+
+	private NullLogger()
+	{
+	}
+
+	public void Log(NexusLogLevel level, string message, Exception exception = null)
+	{
+	}
+}

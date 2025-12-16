@@ -1,0 +1,10 @@
+namespace Facepunch.Nexus.Models;
+
+internal class ZonePlayerLogin : ZonePlayerDetails
+{
+	public string RedirectIpAddress { get; set; }
+
+	public int? RedirectGamePort { get; set; }
+
+	public int? RedirectQueryPort { get; set; }
+}

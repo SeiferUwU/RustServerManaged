@@ -1,0 +1,52 @@
+using System;
+using System.Threading.Tasks;
+using Steamworks;
+
+namespace Rust.Platform.Steam;
+
+public class SteamItem : IPlayerItem
+{
+	public InventoryItem Value;
+
+	public ulong Id => Value.Id.Value;
+
+	public int DefinitionId => Value.DefId.Value;
+
+	public int Quantity => Value.Quantity;
+
+	public DateTimeOffset Acquired => Value.Acquired.ToUniversalTime();
+
+	public ulong WorkshopId
+	{
+		get
+		{
+			if (!Value.Properties.TryGetValue("workshopid", out var value))
+			{
+				return 0uL;
+			}
+			return ulong.Parse(value);
+		}
+	}
+
+	public string ItemShortName
+	{
+		get
+		{
+			if (!Value.Properties.TryGetValue("itemshortname", out var value))
+			{
+				return null;
+			}
+			return value;
+		}
+	}
+
+	public SteamItem(InventoryItem item)
+	{
+		Value = item;
+	}
+
+	public async Task Consume()
+	{
+		await Value.ConsumeAsync();
+	}
+}

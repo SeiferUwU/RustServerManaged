@@ -1,0 +1,13 @@
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Facepunch;
+
+internal static class Mono
+{
+	internal static void FixHttpsValidation()
+	{
+		ServicePointManager.ServerCertificateValidationCallback = (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
+	}
+}

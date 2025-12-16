@@ -1,0 +1,22 @@
+using System;
+
+namespace Facepunch.Rcon;
+
+public struct RconClientStats
+{
+	public int ConnectionId;
+
+	public string IP;
+
+	public int Port;
+
+	public DateTime ConnectedAt;
+
+	public int BroadcastedMessages;
+
+	public int SentMessages;
+
+	public int RecievedMessages;
+
+	public bool IsSubscribed;
+}

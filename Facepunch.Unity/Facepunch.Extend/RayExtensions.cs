@@ -1,0 +1,17 @@
+using UnityEngine;
+
+namespace Facepunch.Extend;
+
+public static class RayExtensions
+{
+	public static Vector3 ClosestPoint(this Ray ray, Vector3 position)
+	{
+		Vector3 vector = ray.origin - position;
+		return vector - Vector3.Dot(vector, ray.direction) * ray.direction;
+	}
+
+	public static float ClosestDistance(this Ray ray, Vector3 position)
+	{
+		return ray.ClosestPoint(position).magnitude;
+	}
+}

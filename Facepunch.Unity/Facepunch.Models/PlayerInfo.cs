@@ -1,0 +1,9 @@
+namespace Facepunch.Models;
+
+[JsonModel]
+public struct PlayerInfo
+{
+	public string Name { get; set; }
+
+	public string Id { get; set; }
+}

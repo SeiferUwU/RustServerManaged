@@ -1,0 +1,7 @@
+namespace Facepunch.Models.Database;
+
+[JsonModel]
+public class Remove : Base
+{
+	public string Id;
+}

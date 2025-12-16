@@ -1,0 +1,11 @@
+namespace Facepunch.Flexbox;
+
+public enum FlexJustify
+{
+	Start,
+	End,
+	Center,
+	SpaceBetween,
+	SpaceAround,
+	SpaceEvenly
+}

@@ -1,0 +1,23 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Facepunch;
+
+public class PerformanceUI : MonoBehaviour
+{
+	public LayoutElement[] rainbow;
+
+	public Text info;
+
+	public Text fps;
+
+	public Text ms;
+
+	public Text mb;
+
+	public Text gc;
+
+	private Canvas Canvas;
+
+	private float updateTime;
+}

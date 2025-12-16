@@ -1,0 +1,105 @@
+using System.Net;
+using System.Net.Http;
+
+namespace Facepunch.Nexus;
+
+internal readonly struct ApiResult
+{
+	public HttpStatusCode StatusCode { get; }
+
+	public bool IsSuccess
+	{
+		get
+		{
+			if (StatusCode >= HttpStatusCode.OK)
+			{
+				return StatusCode <= (HttpStatusCode)299;
+			}
+			return false;
+		}
+	}
+
+	public ApiResult(HttpStatusCode statusCode)
+	{
+		StatusCode = statusCode;
+	}
+
+	public void EnsureSuccessful()
+	{
+		if (!IsSuccess)
+		{
+			throw new HttpRequestException($"API call was not successful: {StatusCode}");
+		}
+	}
+}
+internal readonly struct ApiResult<T>
+{
+	private readonly T _response;
+
+	private readonly bool _hasResponse;
+
+	public HttpStatusCode StatusCode { get; }
+
+	public bool IsSuccess
+	{
+		get
+		{
+			if (StatusCode >= HttpStatusCode.OK)
+			{
+				return StatusCode <= (HttpStatusCode)299;
+			}
+			return false;
+		}
+	}
+
+	public T Response
+	{
+		get
+		{
+			EnsureSuccessfulWithResponse();
+			return _response;
+		}
+	}
+
+	public ApiResult(HttpStatusCode statusCode, T response)
+	{
+		StatusCode = statusCode;
+		_response = response;
+		_hasResponse = true;
+	}
+
+	public ApiResult(HttpStatusCode statusCode)
+	{
+		StatusCode = statusCode;
+		_response = default(T);
+		_hasResponse = false;
+	}
+
+	public void EnsureSuccessful()
+	{
+		if (!IsSuccess)
+		{
+			throw new HttpRequestException($"API call was not successful: {StatusCode}");
+		}
+	}
+
+	public void EnsureSuccessfulWithResponse()
+	{
+		EnsureSuccessful();
+		if (!_hasResponse)
+		{
+			throw new HttpRequestException($"API call did not return a response: {StatusCode}");
+		}
+	}
+
+	public bool TryGetResponse(out T response)
+	{
+		if (IsSuccess && _hasResponse)
+		{
+			response = _response;
+			return true;
+		}
+		response = default(T);
+		return false;
+	}
+}

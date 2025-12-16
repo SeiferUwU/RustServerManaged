@@ -1,0 +1,21 @@
+using System;
+
+namespace Facepunch.Nexus.Logging;
+
+public static class NexusLoggerExtensions
+{
+	public static void LogInfo(this INexusLogger logger, string message)
+	{
+		logger?.Log(NexusLogLevel.Info, message);
+	}
+
+	public static void LogWarn(this INexusLogger logger, string message, Exception exception = null)
+	{
+		logger?.Log(NexusLogLevel.Warn, message, exception);
+	}
+
+	public static void LogError(this INexusLogger logger, string message, Exception exception = null)
+	{
+		logger?.Log(NexusLogLevel.Error, message, exception);
+	}
+}

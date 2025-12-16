@@ -1,0 +1,7 @@
+namespace Facepunch.Models.Database;
+
+[JsonModel]
+public class Add : Base
+{
+	public string Content;
+}

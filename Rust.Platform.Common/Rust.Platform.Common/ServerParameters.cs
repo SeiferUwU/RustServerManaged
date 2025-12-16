@@ -1,0 +1,35 @@
+using System;
+using System.Net;
+
+namespace Rust.Platform.Common;
+
+public readonly struct ServerParameters
+{
+	public string ShortName { get; }
+
+	public string FullName { get; }
+
+	public string Version { get; }
+
+	public bool IsSecure { get; }
+
+	public bool HideIP { get; }
+
+	public IPAddress Address { get; }
+
+	public ushort GamePort { get; }
+
+	public ushort QueryPort { get; }
+
+	public ServerParameters(string shortName, string fullName, string version, bool isSecure, bool hideIP, IPAddress address, ushort gamePort, ushort queryPort = 0)
+	{
+		ShortName = shortName ?? throw new ArgumentNullException("shortName");
+		FullName = fullName ?? throw new ArgumentNullException("fullName");
+		Version = version ?? throw new ArgumentNullException("version");
+		IsSecure = isSecure;
+		HideIP = hideIP;
+		Address = address;
+		GamePort = gamePort;
+		QueryPort = queryPort;
+	}
+}

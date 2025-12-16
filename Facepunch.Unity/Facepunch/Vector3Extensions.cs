@@ -1,0 +1,17 @@
+using UnityEngine;
+
+namespace Facepunch;
+
+public static class Vector3Extensions
+{
+	public static Vector3 XZ(this Vector3 o, float y = 0f)
+	{
+		return new Vector3(o.x, y, o.z);
+	}
+
+	public static Vector3 RemoveAxis(this Vector3 o, Vector3 axis)
+	{
+		Vector3 normalized = axis.normalized;
+		return o - normalized * Vector3.Dot(o, normalized);
+	}
+}

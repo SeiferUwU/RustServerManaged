@@ -1,0 +1,87 @@
+using System;
+using Newtonsoft.Json;
+
+namespace Rust.Workshop;
+
+public class ItemSchema
+{
+	public class Item
+	{
+		public string name;
+
+		public uint itemdefid;
+
+		public string type;
+
+		public string price_category;
+
+		public string icon_url;
+
+		public string icon_url_large;
+
+		public bool marketable;
+
+		public bool tradable;
+
+		public bool commodity;
+
+		public string market_hash_name;
+
+		public string market_name;
+
+		public string bundle;
+
+		public string description;
+
+		public string workshopid;
+
+		public string itemshortname;
+
+		public string tags;
+
+		public string store_tags;
+
+		public string store_images;
+
+		public string exchange;
+
+		public bool store_hidden;
+
+		public string background_color;
+
+		public string name_color;
+
+		[NonSerialized]
+		public DropChance dropChance;
+
+		[NonSerialized]
+		public Price priceCategory;
+
+		public string workshopdownload;
+
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+		public int? purchase_limit;
+
+		[JsonIgnore]
+		public double Price => (double)priceCategory / 100.0;
+	}
+
+	public class PlaytimeDropItem : Item
+	{
+		public int drop_interval;
+
+		public bool use_drop_window;
+
+		public int drop_window;
+
+		public int drop_max_per_window;
+
+		public bool use_drop_limit;
+
+		public int drop_limit;
+	}
+
+	public int appid;
+
+	public Item[] items;
+}

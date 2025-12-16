@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+
+namespace Facepunch.Nexus.Models;
+
+public struct ClanDetails
+{
+	public long ClanId { get; set; }
+
+	public string Name { get; set; }
+
+	public long Created { get; set; }
+
+	public string Creator { get; set; }
+
+	public long Score { get; set; }
+
+	public List<ClanRole> Roles { get; set; }
+
+	public List<ClanMember> Members { get; set; }
+
+	public int MaxMemberCount { get; set; }
+
+	public List<ClanInvite> Invites { get; set; }
+
+	public VariableDictionary Variables { get; set; }
+}

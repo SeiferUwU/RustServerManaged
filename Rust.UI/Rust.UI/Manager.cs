@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Rust.UI;
+
+public static class Manager
+{
+	private static Dictionary<string, GameObject> Prefabs = new Dictionary<string, GameObject>();
+
+	internal static GameObject CreatePrefab(string name)
+	{
+		if (!Prefabs.TryGetValue(name, out var value))
+		{
+			value = FileSystem.Load<GameObject>(name);
+			if (value == null)
+			{
+				throw new Exception("Couldn't find prefab " + name);
+			}
+			Prefabs[name] = value;
+		}
+		GameObject gameObject = UnityEngine.Object.Instantiate(value);
+		gameObject.SetActive(value: true);
+		return gameObject;
+	}
+
+	internal static T Create<T>(string prefabName) where T : MonoBehaviour
+	{
+		return CreatePrefab(prefabName).GetComponent<T>();
+	}
+}

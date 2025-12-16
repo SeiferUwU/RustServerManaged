@@ -1,0 +1,3 @@
+namespace Facepunch.Nexus;
+
+public delegate void NexusVariableChangedHandler(BaseNexusClient sender, string variableKey);

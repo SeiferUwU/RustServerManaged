@@ -1,0 +1,22 @@
+using System.Collections.Generic;
+
+namespace Facepunch.Nexus.Models;
+
+public struct ClanRoleParameters
+{
+	public string Name { get; set; }
+
+	public bool CanInvite { get; set; }
+
+	public bool CanKick { get; set; }
+
+	public bool CanPromote { get; set; }
+
+	public bool CanDemote { get; set; }
+
+	public bool CanAccessLogs { get; set; }
+
+	public bool CanAccessScoreEvents { get; set; }
+
+	public List<VariableUpdate> Variables { get; set; }
+}

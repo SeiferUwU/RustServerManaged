@@ -1,0 +1,10 @@
+namespace Facepunch.Nexus.Models;
+
+public struct ClanInvite
+{
+	public string PlayerId { get; set; }
+
+	public string RecruiterPlayerId { get; set; }
+
+	public long Created { get; set; }
+}

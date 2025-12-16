@@ -1,0 +1,33 @@
+using System;
+using UnityEngine;
+
+namespace Facepunch;
+
+public static class AnimationCurveEx
+{
+	public static Keyframe First(this AnimationCurve curve)
+	{
+		if (curve == null)
+		{
+			throw new NullReferenceException();
+		}
+		if (curve.length == 0)
+		{
+			throw new ArgumentOutOfRangeException();
+		}
+		return curve[0];
+	}
+
+	public static Keyframe Last(this AnimationCurve curve)
+	{
+		if (curve == null)
+		{
+			throw new NullReferenceException();
+		}
+		if (curve.length == 0)
+		{
+			throw new ArgumentOutOfRangeException();
+		}
+		return curve[curve.length - 1];
+	}
+}

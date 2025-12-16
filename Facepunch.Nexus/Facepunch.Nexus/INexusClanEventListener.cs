@@ -1,0 +1,18 @@
+using Facepunch.Nexus.Models;
+
+namespace Facepunch.Nexus;
+
+public interface INexusClanEventListener
+{
+	void OnDisbanded(in ClanDisbandedEvent args);
+
+	void OnInvitation(in ClanInvitedEvent args);
+
+	void OnJoined(in ClanJoinedEvent args);
+
+	void OnKicked(in ClanKickedEvent args);
+
+	void OnChanged(in ClanChangedEvent args);
+
+	void OnUnload(in long clanId);
+}

@@ -1,0 +1,10 @@
+namespace Facepunch.Nexus.Models;
+
+public struct VariableData
+{
+	public string Value { get; set; }
+
+	public VariableType Type { get; set; }
+
+	public long LastUpdated { get; set; }
+}

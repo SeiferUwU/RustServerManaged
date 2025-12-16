@@ -1,0 +1,14 @@
+namespace Rust.Demo;
+
+public struct Packet
+{
+	public long Position;
+
+	public int Size;
+
+	public long Time;
+
+	public byte[] Data;
+
+	public bool isValid => Size > 0;
+}

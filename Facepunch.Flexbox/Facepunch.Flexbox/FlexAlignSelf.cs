@@ -1,0 +1,20 @@
+using System;
+
+namespace Facepunch.Flexbox;
+
+[Serializable]
+public struct FlexAlignSelf
+{
+	public bool HasValue;
+
+	public FlexAlign Value;
+
+	internal FlexAlign GetValueOrDefault(FlexAlign defaultValue)
+	{
+		if (!HasValue)
+		{
+			return defaultValue;
+		}
+		return Value;
+	}
+}

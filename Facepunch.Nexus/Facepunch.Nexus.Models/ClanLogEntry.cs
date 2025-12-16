@@ -1,0 +1,16 @@
+namespace Facepunch.Nexus.Models;
+
+public struct ClanLogEntry
+{
+	public long Timestamp { get; set; }
+
+	public string EventKey { get; set; }
+
+	public string Arg1 { get; set; }
+
+	public string Arg2 { get; set; }
+
+	public string Arg3 { get; set; }
+
+	public string Arg4 { get; set; }
+}

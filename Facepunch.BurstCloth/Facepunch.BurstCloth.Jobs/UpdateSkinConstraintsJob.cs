@@ -1,0 +1,25 @@
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Mathematics;
+using UnityEngine.Jobs;
+
+namespace Facepunch.BurstCloth.Jobs;
+
+[BurstCompile]
+internal struct UpdateSkinConstraintsJob : IJobParallelForTransform
+{
+	[NativeMatchesParallelForLength]
+	public NativeArray<SkinConstraint> SkinConstraints;
+
+	public void Execute(int index, [ReadOnly] TransformAccess transform)
+	{
+		if (transform.isValid)
+		{
+			ref SkinConstraint reference = ref BurstUtil.Get(in SkinConstraints, index);
+			float4x4 a = transform.localToWorldMatrix;
+			reference.WorldSkinNormal = math.normalize(math.rotate(a, reference.LocalSkinNormal).xyz);
+			reference.WorldEscapeNormal = math.normalize(math.rotate(a, reference.LocalEscapeNormal).xyz);
+			reference.WorldSkinPosition = math.mul(a, new float4(reference.LocalSkinPosition, 1f)).xyz;
+		}
+	}
+}

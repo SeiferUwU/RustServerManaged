@@ -1,0 +1,22 @@
+using System;
+
+namespace Rust.Demo;
+
+public static class PlaybackStats
+{
+	public static int Frames;
+
+	public static int Packets;
+
+	public static TimeSpan TotalTime;
+
+	public static TimeSpan DemoLength;
+
+	public static void Reset()
+	{
+		Frames = 0;
+		Packets = 0;
+		TotalTime = default(TimeSpan);
+		DemoLength = default(TimeSpan);
+	}
+}
