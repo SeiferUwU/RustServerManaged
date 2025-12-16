@@ -1,0 +1,197 @@
+using System;
+using System.Linq;
+using ConVar;
+using Rust;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Rust/Loot Spawn")]
+public class LootSpawn : ScriptableObject
+{
+	[Serializable]
+	public struct Entry
+	{
+		[Tooltip("If this category is chosen, we will spawn 1+ this amount")]
+		public int extraSpawns;
+
+		[Tooltip("If a subcategory exists we'll choose from there instead of any items specified")]
+		public LootSpawn category;
+
+		[Tooltip("The higher this number, the more likely this will be chosen")]
+		public int weight;
+
+		[Tooltip("Adding eras to this list will restrict the loot table to only work in these eras")]
+		public Era[] restrictedEras;
+
+		public int RuntimeWeightBonus()
+		{
+			return (BaseGameMode.GetActiveGameMode(serverside: true)?.GetLootWeightModifier(GetWeightBonusItem())).GetValueOrDefault();
+		}
+
+		public ItemDefinition GetWeightBonusItem()
+		{
+			if (category.allowedItems.Length == 1)
+			{
+				return category.allowedItems[0].itemDef;
+			}
+			return null;
+		}
+	}
+
+	public ItemAmountRanged[] items;
+
+	public Entry[] subSpawn;
+
+	[NonSerialized]
+	private Entry[] allowedSubSpawn;
+
+	[NonSerialized]
+	private ItemAmountRanged[] allowedItems;
+
+	private Era era;
+
+	private uint lastGameModeFilterApplied;
+
+	public bool HasAnySpawns()
+	{
+		EnsureFilterUpdated();
+		if (allowedSubSpawn.Length == 0)
+		{
+			return allowedItems.Length != 0;
+		}
+		return true;
+	}
+
+	public void ClearCache()
+	{
+		allowedItems = null;
+		allowedSubSpawn = null;
+		if (subSpawn != null)
+		{
+			Entry[] array = subSpawn;
+			for (int i = 0; i < array.Length; i++)
+			{
+				array[i].category?.ClearCache();
+			}
+		}
+	}
+
+	private void EnsureFilterUpdated()
+	{
+		bool num = era != ConVar.Server.Era;
+		bool flag = lastGameModeFilterApplied != BaseGameMode.GetActiveGameModeId(serverside: true);
+		if (!num && !flag && allowedSubSpawn != null)
+		{
+			return;
+		}
+		era = ConVar.Server.Era;
+		lastGameModeFilterApplied = BaseGameMode.GetActiveGameModeId(serverside: true);
+		Entry[] array = subSpawn;
+		for (int i = 0; i < array.Length; i++)
+		{
+			array[i].category.EnsureFilterUpdated();
+		}
+		if (subSpawn == null || subSpawn.Length == 0)
+		{
+			allowedSubSpawn = Array.Empty<Entry>();
+		}
+		else
+		{
+			allowedSubSpawn = subSpawn.Where((Entry x) => x.category.HasAnySpawns() && (x.restrictedEras == null || x.restrictedEras.Length == 0 || Array.IndexOf(x.restrictedEras, ConVar.Server.Era) != -1)).ToArray();
+		}
+		if (items == null || items.Length == 0)
+		{
+			allowedItems = Array.Empty<ItemAmountRanged>();
+			return;
+		}
+		allowedItems = items.Where((ItemAmountRanged x) => x.itemDef.IsAllowed(EraRestriction.Loot)).ToArray();
+	}
+
+	public ItemDefinition GetBlueprintBaseDef()
+	{
+		return ItemManager.FindItemDefinition("blueprintbase");
+	}
+
+	public void SpawnIntoContainer(ItemContainer container, ItemOwnershipShare ownership = default(ItemOwnershipShare), ItemContainer fallbackContainer = null)
+	{
+		EnsureFilterUpdated();
+		if (allowedSubSpawn != null && allowedSubSpawn.Length != 0)
+		{
+			SubCategoryIntoContainer(container, ownership, fallbackContainer);
+		}
+		else
+		{
+			if (allowedItems == null)
+			{
+				return;
+			}
+			ItemAmountRanged[] array = allowedItems;
+			foreach (ItemAmountRanged itemAmountRanged in array)
+			{
+				if (itemAmountRanged == null)
+				{
+					continue;
+				}
+				Item item = null;
+				if (itemAmountRanged.itemDef.spawnAsBlueprint)
+				{
+					ItemDefinition blueprintBaseDef = GetBlueprintBaseDef();
+					if (blueprintBaseDef == null)
+					{
+						continue;
+					}
+					Item item2 = ItemManager.Create(blueprintBaseDef, 1, 0uL);
+					item2.blueprintTarget = itemAmountRanged.itemDef.itemid;
+					item = item2;
+				}
+				else
+				{
+					item = ItemManager.CreateByItemID(itemAmountRanged.itemid, (int)itemAmountRanged.GetAmount(), 0uL);
+				}
+				if (item == null)
+				{
+					continue;
+				}
+				item.OnVirginSpawn();
+				if (ownership.IsValid())
+				{
+					item.SetItemOwnership(ownership.username, ownership.reason);
+				}
+				if (!item.MoveToContainer(container) && (fallbackContainer == null || !item.MoveToContainer(fallbackContainer)))
+				{
+					if ((bool)container.playerOwner)
+					{
+						item.Drop(container.playerOwner.GetDropPosition(), container.playerOwner.GetDropVelocity());
+					}
+					else
+					{
+						item.Remove();
+					}
+				}
+			}
+		}
+	}
+
+	private void SubCategoryIntoContainer(ItemContainer container, ItemOwnershipShare ownership = default(ItemOwnershipShare), ItemContainer fallbackContainer = null)
+	{
+		int num = allowedSubSpawn.Sum((Entry x) => x.weight + x.RuntimeWeightBonus());
+		int num2 = UnityEngine.Random.Range(0, num);
+		for (int num3 = 0; num3 < allowedSubSpawn.Length; num3++)
+		{
+			if (allowedSubSpawn[num3].category == null)
+			{
+				continue;
+			}
+			num -= allowedSubSpawn[num3].weight + allowedSubSpawn[num3].RuntimeWeightBonus();
+			if (num2 >= num)
+			{
+				for (int num4 = 0; num4 < 1 + allowedSubSpawn[num3].extraSpawns; num4++)
+				{
+					allowedSubSpawn[num3].category.SpawnIntoContainer(container, ownership, fallbackContainer);
+				}
+				return;
+			}
+		}
+		string text = ((container.entityOwner != null) ? container.entityOwner.name : "Unknown");
+		Debug.LogWarning($"SubCategoryIntoContainer for loot '{base.name}' for entity '{text}' ended with randomWeight ({num2}) < totalWeight ({num}). This should never happen! ", this);
+	}
+}

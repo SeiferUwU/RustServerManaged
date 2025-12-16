@@ -1,0 +1,55 @@
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
+
+namespace Facepunch.MarchingCubes;
+
+[BurstCompile]
+internal struct CleanupDuplicateVerticesJob : IJob
+{
+	[global::Unity.Collections.ReadOnly]
+	public NativeList<float3> inputVertices;
+
+	[global::Unity.Collections.ReadOnly]
+	public NativeList<int> inputIndices;
+
+	[WriteOnly]
+	public NativeList<float3> outputVertices;
+
+	[WriteOnly]
+	public NativeList<int> outputIndices;
+
+	public NativeHashMap<int, int> indexToIndices;
+
+	public float3 vertexOffset;
+
+	public float invScale;
+
+	public int width;
+
+	public int widthHeight;
+
+	public void Execute()
+	{
+		indexToIndices.Clear();
+		outputVertices.Clear();
+		outputIndices.Clear();
+		int value = 0;
+		for (int i = 0; i < inputVertices.Length; i++)
+		{
+			int3 @int = (int3)(inputVertices[i] * invScale + vertexOffset);
+			int item = inputIndices[i];
+			int key = @int.x + @int.y * width + @int.z * widthHeight;
+			if (indexToIndices.TryGetValue(key, out item))
+			{
+				outputIndices.Add(in item);
+				continue;
+			}
+			indexToIndices.Add(key, value);
+			outputVertices.Add(inputVertices[i]);
+			outputIndices.Add(in value);
+			value++;
+		}
+	}
+}

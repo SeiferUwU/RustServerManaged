@@ -1,0 +1,37 @@
+using UnityEngine;
+
+public class AmmoCounterViewmodelComponent : MonoBehaviour, IViewmodelComponent, IAnimationEventReceiver
+{
+	private static MaterialPropertyBlock materialPropertyBlock;
+
+	private static readonly int colorProperty = Shader.PropertyToID("_Color");
+
+	public DigitController AmmoCountLeft;
+
+	public DigitController AmmoCountRight;
+
+	public MeshRenderer BurstOn;
+
+	public MeshRenderer LowAmmoOn;
+
+	public Light DisplayLight;
+
+	public LeanTweenType deployFadeInEaseType;
+
+	[Min(0f)]
+	public float deployFadeInDuration = 0.5f;
+
+	[Min(0f)]
+	[Tooltip("If ammo is less than or equal to this, then display the low ammo indicator.")]
+	public int lowAmmoAmount;
+
+	[Tooltip("Recommend to use an \"In\" function here rather than \"In Out\" as the fade-in animation gets reversed upon starting a fade-out (effectively turning the In function into an Out)")]
+	public LeanTweenType lowAmmoIndicatorFadeEaseType;
+
+	[Tooltip("How long a fade takes. Total fade in+out duration will be this *2")]
+	[Min(0f)]
+	public float lowAmmoIndicatorFadeDuration = 0.5f;
+
+	[Min(0f)]
+	public float lightOnIntensity = 0.125f;
+}

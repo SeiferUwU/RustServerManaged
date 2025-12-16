@@ -1,0 +1,274 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.World">
+      <HintPath>..\..\Managed\Rust.World.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.UnityEngine">
+      <HintPath>..\..\Managed\Facepunch.UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.UI">
+      <HintPath>..\..\Managed\Rust.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Workshop">
+      <HintPath>..\..\Managed\Rust.Workshop.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Platform.Common">
+      <HintPath>..\..\Managed\Rust.Platform.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Console">
+      <HintPath>..\..\Managed\Facepunch.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Global">
+      <HintPath>..\..\Managed\Rust.Global.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Flexbox">
+      <HintPath>..\..\Managed\Facepunch.Flexbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Network">
+      <HintPath>..\..\Managed\Facepunch.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Localization">
+      <HintPath>..\..\Managed\Rust.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Data">
+      <HintPath>..\..\Managed\Rust.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Facepunch.Nexus">
+      <HintPath>..\..\Managed\Facepunch.Nexus.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.System">
+      <HintPath>..\..\Managed\Facepunch.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Unity">
+      <HintPath>..\..\Managed\Facepunch.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Clans">
+      <HintPath>..\..\Managed\Rust.Clans.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>..\..\Managed\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>..\..\Managed\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="CurvedTextMeshPro">
+      <HintPath>..\..\Managed\CurvedTextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Skeleton">
+      <HintPath>..\..\Managed\Facepunch.Skeleton.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.BurstCloth">
+      <HintPath>..\..\Managed\Facepunch.BurstCloth.dll</HintPath>
+    </Reference>
+    <Reference Include="EZhex1991.EZSoftBone">
+      <HintPath>..\..\Managed\EZhex1991.EZSoftBone.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Raknet">
+      <HintPath>..\..\Managed\Facepunch.Raknet.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Wardddev.FlexibleColorPicker">
+      <HintPath>..\..\Managed\Wardddev.FlexibleColorPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>..\..\Managed\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Input">
+      <HintPath>..\..\Managed\Facepunch.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.UnwrapBaker.Settings">
+      <HintPath>..\..\Managed\Facepunch.UnwrapBaker.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.FileSystem">
+      <HintPath>..\..\Managed\Rust.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip.Reduced">
+      <HintPath>..\..\Managed\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Cronos">
+      <HintPath>..\..\Managed\Cronos.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Sqlite">
+      <HintPath>..\..\Managed\Facepunch.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.RenderPipeline">
+      <HintPath>..\..\Managed\Rust.RenderPipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\Managed\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>..\..\Managed\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="com.olegknyazev.softmask">
+      <HintPath>..\..\Managed\com.olegknyazev.softmask.dll</HintPath>
+    </Reference>
+    <Reference Include="BoomlagoonJSON">
+      <HintPath>..\..\Managed\BoomlagoonJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>..\..\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="RTLTMPro">
+      <HintPath>..\..\Managed\RTLTMPro.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyRoads3Dv3">
+      <HintPath>..\..\Managed\EasyRoads3Dv3.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Fleck">
+      <HintPath>..\..\Managed\Fleck.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Rcon">
+      <HintPath>..\..\Managed\Facepunch.Rcon.dll</HintPath>
+    </Reference>
+    <Reference Include="ZString">
+      <HintPath>..\..\Managed\ZString.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Blobs">
+      <HintPath>..\..\Managed\Azure.Storage.Blobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity">
+      <HintPath>..\..\Managed\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Core">
+      <HintPath>..\..\Managed\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Ping">
+      <HintPath>..\..\Managed\Facepunch.Ping.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Harmony">
+      <HintPath>..\..\Managed\Rust.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UIEffect">
+      <HintPath>..\..\Managed\UIEffect.dll</HintPath>
+    </Reference>
+    <Reference Include="LeTai.TrueShadow">
+      <HintPath>..\..\Managed\LeTai.TrueShadow.dll</HintPath>
+    </Reference>
+    <Reference Include="LZ4">
+      <HintPath>..\..\Managed\LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Clans.Local">
+      <HintPath>..\..\Managed\Rust.Clans.Local.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Platform">
+      <HintPath>..\..\Managed\Rust.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Demo">
+      <HintPath>..\..\Managed\Rust.Demo.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\Managed\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="TimeZoneConverter">
+      <HintPath>..\..\Managed\TimeZoneConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.SteamNetworking">
+      <HintPath>..\..\Managed\Facepunch.SteamNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.Core">
+      <HintPath>..\..\Managed\Oxide.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

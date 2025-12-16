@@ -1,0 +1,43 @@
+using Rust.Workshop;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Rust/Skins/ItemSkin")]
+public class ItemSkin : SteamInventoryItem
+{
+	public Skinnable Skinnable;
+
+	public Material[] Materials;
+
+	[Tooltip("If set, whenever we make an item with this skin, we'll spawn this item without a skin instead")]
+	public ItemDefinition Redirect;
+
+	[Tooltip("(overriden by Redirect) If set, this is the icon that will be used in-game (spray can, crafting menu, repair bench). Allows you to have different icons for the store and in-game (see halloween wallpapers as an example)")]
+	public Sprite inGameIcon;
+
+	public bool UnlockedByDefault;
+
+	public void ApplySkin(GameObject obj)
+	{
+		if (!(Skinnable == null))
+		{
+			Skin.Apply(obj, Skinnable, Materials);
+		}
+	}
+
+	public override bool HasUnlocked(ulong playerId)
+	{
+		if (UnlockedByDefault)
+		{
+			return true;
+		}
+		if (Redirect != null && Redirect.isRedirectOf != null && Redirect.isRedirectOf.steamItem != null)
+		{
+			BasePlayer basePlayer = BasePlayer.FindByID(playerId);
+			if (basePlayer != null && basePlayer.blueprints.CheckSkinOwnership(Redirect.isRedirectOf.steamItem.id, basePlayer.userID))
+			{
+				return true;
+			}
+		}
+		return base.HasUnlocked(playerId);
+	}
+}
